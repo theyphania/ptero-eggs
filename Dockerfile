@@ -1,8 +1,10 @@
 FROM ubuntu:20.04
 
-RUN apt update && apt install ca-certificates nginx
-RUN apt install php8 php8-fpm  php8-soap php8-openssl php8-gmp php8-pdo_odbc php8-json php8-dom php8-pdo php8-zip php8-mysqli php8-sqlite3 php8-pdo_pgsql php8-bcmath php8-gd php8-odbc php8-pdo_mysql php8-pdo_sqlite php8-gettext php8-xmlreader  php8-bz2 php8-iconv php8-pdo_dblib php8-curl php8-ctype php8-phar php8-fileinfo php8-mbstring php8-tokenizer
-RUN apt install php8-xml php8-simplexml php8-xmlwriter php8-session
+RUN apt update && apt install sudo software-properties-common ca-certificates nginx -y
+RUN LC_ALL=C.UTF-8.0 add-apt-repository -y ppa:ondrej/php
+RUN apt update && apt upgrade -y  && apt install php8.0 php8.0-common php8.0-fpm php8.0-soap php8.0-gmp php8.0-dom php8.0-pdo php8.0-zip php8.0-mysqli php8.0-sqlite3 php8.0-bcmath php8.0-gd php8.0-odbc php8.0-gettext php8.0-xmlreader php8.0-bz2 php8.0-iconv php8.0-curl php8.0-ctype php8.0-phar php8.0-fileinfo php8.0-mbstring php8.0-tokenizer -y
+
+RUN apt install php8.0-xml php8.0-simplexml php8.0-xmlwriter -y
 
 USER container
 ENV  USER container
